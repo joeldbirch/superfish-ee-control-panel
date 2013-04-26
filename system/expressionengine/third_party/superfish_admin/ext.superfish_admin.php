@@ -1,27 +1,14 @@
 <?php  if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
 /**
- * ExpressionEngine - by EllisLab
- *
- * @package		ExpressionEngine
- * @author		ExpressionEngine Dev Team
- * @copyright	Copyright (c) 2003 - 2011, EllisLab, Inc.
- * @license		http://expressionengine.com/user_guide/license.html
- * @link		http://expressionengine.com
- * @since		Version 2.0
- * @filesource
- */
- 
-// ------------------------------------------------------------------------
-
-/**
  * Superfish Admin Extension
  *
  * @package		ExpressionEngine
- * @subpackage	Addons
- * @category	Extension
+ * @subpackage		Addons
+ * @category		Extension
  * @author		Joel Birch
  * @link		http://github.com/joeldbirch
+ * @copyright		Copyright (c) 2013 Joel Birch
  */
 
 class Superfish_admin_ext {
@@ -30,7 +17,7 @@ class Superfish_admin_ext {
 	public $description		= 'Superfish helps with EE navigation.';
 	public $docs_url		= 'http://github.com/joeldbirch/superfish';
 	public $name			= 'Superfish Control Panel Menu';
-	public $settings_exist	= 'n';
+	public $settings_exist		= 'n';
 	public $version			= '0.1';
 	
 	private $EE;
@@ -91,9 +78,11 @@ class Superfish_admin_ext {
 		if ( $this->EE->extensions->last_call !== FALSE ) {
 			$menu = $this->EE->extensions->last_call;
 		}
+		$this->theme_url	= defined( 'URL_THIRD_THEMES' )
+					? URL_THIRD_THEMES . 'superfish_admin'
+					: $this->EE->config->item('theme_folder_url') . 'third_party/superfish_admin';
 		
-		$this->EE->cp->add_to_foot('<script src="'.URL_THIRD_THEMES.'superfish_admin/js/superfish-combined-ck.js"></script>');
-
+		$this->EE->cp->add_to_foot('<script src="'.$this->theme_url.'/js/superfish-combined-ck.js"></script>');
 		$css = '
 			#navigationTabs li.parent > ul {
 				display: none;
