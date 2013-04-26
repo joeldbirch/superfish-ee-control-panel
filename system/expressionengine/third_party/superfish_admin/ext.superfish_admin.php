@@ -88,6 +88,10 @@ class Superfish_admin_ext {
 
 	public function cp_menu_array($menu)
 	{
+		if ( $this->EE->extensions->last_call !== FALSE ) {
+			$menu = $this->EE->extensions->last_call;
+		}
+		
 		$this->EE->cp->add_to_foot('<script src="'.URL_THIRD_THEMES.'superfish_admin/js/superfish-combined-ck.js"></script>');
 
 		$css = '
