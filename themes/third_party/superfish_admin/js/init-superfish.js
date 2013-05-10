@@ -15,7 +15,7 @@
       this.menu.off('mouseleave');
       this.top_lis.off('mouseenter');
       this.other_lis.off('mouseenter mouseleave');
-      return this.links.off('click').filter('[href="#"]').on('click.superfish', false);
+      return this.links.not('#toggle_cpnav').off('click').filter('[href="#"]').on('click.superfish', false);
     },
     init_superfish: function() {
       return this.menu.superfish({

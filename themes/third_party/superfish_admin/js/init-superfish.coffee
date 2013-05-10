@@ -15,7 +15,8 @@
       @top_lis.off('mouseenter')
       @other_lis.off('mouseenter mouseleave')
       #shame ee uses # for hrefs when there are relevant pages they could link to
-      @links.off('click').filter('[href="#"]').on('click.superfish', false)
+      #toggle_cpnav retails click handler for Zoo Flexible Admin
+      @links.not('#toggle_cpnav').off('click').filter('[href="#"]').on('click.superfish', false)
 
     init_superfish: ->
       @menu.superfish
